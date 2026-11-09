@@ -1,22 +1,16 @@
-
 using System;
 using System.Collections.Generic;
 
-// The PromptGenerator class is responsible for  controlling the journal questions.
+// The PromptGenerator class manages the journal questions.
 public class PromptGenerator
 {
-
-    // Here Creates a list that will store journal prompts.
-
+    // Creates a list to store journal prompts.
     public List<string> _prompts = new List<string>();
 
-    // This is a constructor that automatically adds prompts to the list.
-
+    // Automatically adds prompts to the list.
     public PromptGenerator()
     {
-
-        // Responsible for adding journal questions.
-
+        // Adds journal questions to the prompt list.
         _prompts.Add("What is one thing that made me smile today?");
         _prompts.Add("What challenge did I overcome today?");
         _prompts.Add("What did I learn about myself today?");
@@ -29,24 +23,16 @@ public class PromptGenerator
         _prompts.Add("What would make tomorrow a successful day?");
     }
 
-
-    // Here is responsible for returning a random journal prompt.
-
+    // Returns a randomly selected journal prompt.
     public string GetRandomPrompt()
     {
-
         // Creates a random number generator.
-
         Random random = new Random();
 
         // Generates a random position in the prompt list.
-
         int index = random.Next(_prompts.Count);
 
-
-        // Returns the prompt at tht index.
-
+        // Returns the prompt at that index.
         return _prompts[index];
     }
 }
-
