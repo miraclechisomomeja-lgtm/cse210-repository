@@ -91,6 +91,20 @@ public class Scripture
         // All words are hidden
         return true;
     }
+
+    // ENHANCEMENT: counts the number of words that are still visible.
+    public int GetVisibleWordCount()
+    {
+        int count = 0;
+        foreach (Word word in _words)
+        {
+            if (!word.IsHidden())
+            {
+                count++;
+            }
+        }
+        return count;
+    }
 }
 
 

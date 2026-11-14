@@ -21,6 +21,11 @@ class Program
             // Display the current scripture
             Console.WriteLine(scripture.GetDisplayText());
 
+            Console.WriteLine();
+
+            //ENHANCEMENT: Display the number of visible words remaining 
+            Console.WriteLine($"Words remaining: {scripture.GetVisibleWordCount()}");
+
             // Ask the user to continue or quit
             Console.WriteLine("\nPress enter to continue or type 'quit' to finish.");
 
