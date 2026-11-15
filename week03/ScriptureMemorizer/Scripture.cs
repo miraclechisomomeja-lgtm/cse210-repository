@@ -17,7 +17,7 @@ public class Scripture
         _reference = reference;
         _words = new List<Word>();
 
-        // Separate the scripture text into individual words
+        // Separate scripture text into individual words
         string[] words = text.Split(' ');
 
         // Create a Word object for each word
@@ -33,7 +33,7 @@ public class Scripture
     {
         Random random = new Random();
 
-        // Create a temporary list of words that are not hidden
+        // Create a temporary list of visible words
         List<Word> visibleWords = new List<Word>();
 
         foreach (Word word in _words)
@@ -44,7 +44,7 @@ public class Scripture
             }
         }
 
-        // Avoid trying to hide more words than are available
+        // Avoid hiding more words than are available
         int count = Math.Min(numberToHide, visibleWords.Count);
 
         // Randomly select and hide words
@@ -54,7 +54,7 @@ public class Scripture
 
             visibleWords[index].Hide();
 
-            // Remove the selected word to prevent selecting it twice
+            // Prevent selecting the same word twice
             visibleWords.RemoveAt(index);
         }
     }
@@ -65,37 +65,35 @@ public class Scripture
     {
         string text = _reference.GetDisplayText() + " ";
 
-        // Add each word to the scripture text
         foreach (Word word in _words)
         {
             text += word.GetDisplayText() + " ";
         }
 
-        // Remove unnecessary spaces at the beginning and end
         return text.Trim();
     }
 
 
-    // Check whether all words in the scripture are hidden
+    // Check whether all scripture words are hidden
     public bool IsCompletelyHidden()
     {
         foreach (Word word in _words)
         {
-            // If at least one word is visible, return false
             if (!word.IsHidden())
             {
                 return false;
             }
         }
 
-        // All words are hidden
         return true;
     }
 
-    // ENHANCEMENT: counts the number of words that are still visible.
+
+    // Enhancement 1: Count visible words remaining
     public int GetVisibleWordCount()
     {
         int count = 0;
+
         foreach (Word word in _words)
         {
             if (!word.IsHidden())
@@ -103,9 +101,39 @@ public class Scripture
                 count++;
             }
         }
+
         return count;
     }
-}
 
+
+    // Enhancement 3: Reveal one randomly hidden word
+    public void ShowRandomWord()
+    {
+        Random random = new Random();
+
+        List<Word> hiddenWords = new List<Word>();
+
+        // Find all hidden words
+        foreach (Word word in _words)
+        {
+            if (word.IsHidden())
+            {
+                hiddenWords.Add(word);
+            }
+        }
+
+        // Reveal one randomly selected hidden word
+        if (hiddenWords.Count > 0)
+        {
+            int index = random.Next(hiddenWords.Count);
+
+            hiddenWords[index].Show();
+        }
+        else
+        {
+            Console.WriteLine("There are no hidden words to reveal.");
+        }
+    }
+}
 
 
