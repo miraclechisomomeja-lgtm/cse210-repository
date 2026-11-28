@@ -75,8 +75,10 @@ class Program
             // Exit the program if the user selects 4.
             else if (choice == "4")
             {
+                // Calculates Total Activities taken
                 int totalActivities = breathingCount + reflectingCount + listingCount;
 
+                // Displays the Summary when the User exits
                 Console.WriteLine();
                 Console.WriteLine("SESSION SUMMARY");
                 Console.WriteLine("----------------------");

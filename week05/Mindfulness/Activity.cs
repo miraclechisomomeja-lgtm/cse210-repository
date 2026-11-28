@@ -70,7 +70,7 @@ public class Activity
             Thread.Sleep(250);
 
             // Erase the previous character.
-            Console.Write("\r  \r");
+            Console.Write("\r    \r");
 
             // Move to the next animation character.
             i++;
